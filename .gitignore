@@ -1,0 +1,52 @@
+# Python bytecode, test, type-checker, and coverage artefacts
+__pycache__/
+*.py[cod]
+*$py.class
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.hypothesis/
+.coverage
+.coverage.*
+htmlcov/
+
+# Virtual environments and local Python tooling
+.venv/
+venv/
+env/
+ENV/
+.python-version
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Generated training, evaluation, and planner outputs
+runs/
+*.pt
+*.pth
+*.ckpt
+*.log
+
+# LaTex build artefacts; retain the .tex report source
+reports/*.aux
+reports/*.bbl
+reports/*.blg
+reports/*.fdb_latexmk
+reports/*.fls
+reports/*.log
+reports/*.out
+reports/*.pdf
+reports/*.synctex.gz
+reports/*.toc
+
+report
+
+# Local IDE and operating-system files
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+# Local secrets and runtime settings
+.env
+.env.*

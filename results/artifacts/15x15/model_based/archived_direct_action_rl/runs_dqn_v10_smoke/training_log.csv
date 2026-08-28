@@ -1,0 +1,2 @@
+episode,global_step,epsilon,objective_reward,raw_game_reward,coverage,seen,phase_reached,length,new_tile_rate,mean_loss,mean_q_loss,mean_imitation_loss,eval_coverage_mean,eval_seen_mean,eval_phase_reached_mean,eval_new_tile_rate_mean,holdout_coverage_mean,holdout_seen_mean,holdout_phase_reached_mean,holdout_new_tile_rate_mean
+1,194,0.99612,91.88700000000023,-1.5373593869209286,0.4711111111111111,0.9822222222222222,1.0,194.0,0.5412371134020618,0.0,0.0,0.0,0.0044444444444444444,0.1111111111111111,0.0,0.0,0.0044444444444444444,0.1111111111111111,0.0,0.0

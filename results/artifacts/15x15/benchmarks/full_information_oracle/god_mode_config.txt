@@ -1,0 +1,5 @@
+episodes: 50
+seed: 50000
+save_dir: god_mode_runs/global_search_8192
+trace_every: 1
+search_beam_width: 8192

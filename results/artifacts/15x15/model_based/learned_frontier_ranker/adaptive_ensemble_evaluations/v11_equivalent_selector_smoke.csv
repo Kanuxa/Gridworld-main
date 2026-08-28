@@ -1,0 +1,3 @@
+seed,environment_set,environment_variant,seen_fraction,coverage,phase,reached_phase2,final_mode,actions,forward_actions,turns,replans,information_replans,coverage_replans,observation_surprises,object_changes,temperature_changes,smell_changes,direct_hazard_entries,meat_collected,fatigue_health_losses,health,energy,terminated,truncated,neural_phase1_decisions,neural_uncertainty_fallbacks,neural_feasibility_fallbacks
+15000,diverse,balanced,0.32,0.07111111111111111,1,False,information,20,15,5,15,15,0,0,0,0,0,0,0,1,9.0,6.5,False,True,16,0,0
+15001,diverse,warm_hazard,0.3466666666666667,0.07111111111111111,1,False,information,20,15,5,15,15,0,0,0,0,0,0,0,1,9.0,5.957197952270507,False,True,16,0,0

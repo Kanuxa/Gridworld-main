@@ -1,0 +1,6 @@
+seed,coverage,actions,forward_moves,unique_route_cells,route_cells,known_danger_sources,danger_zone_entries,route_replans,completed_route,terminated,truncated,health,energy
+7,0.5377777777777778,178,224,225,225,4,0,4,False,True,False,0,9.622975444793694
+8,0.52,180,224,225,225,5,0,5,False,True,False,0,9.54155888557434
+9,0.5688888888888889,182,224,225,225,5,0,4,False,True,False,0,9.847055578231807
+10,0.48,145,224,225,225,2,0,2,False,True,False,0,9.822573280334474
+11,0.5866666666666667,170,224,225,225,3,0,3,False,True,False,0,9.456419754028321

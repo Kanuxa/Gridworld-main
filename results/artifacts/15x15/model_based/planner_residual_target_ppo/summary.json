@@ -1,0 +1,92 @@
+{
+  "config": {
+    "model_type": "planner_residual_target_v8",
+    "model_arch": "planner_scores_plus_bounded_spatial_residual_v1",
+    "environment_preset": "15x15-baseline",
+    "environment_config": {
+      "grid_size": 15,
+      "patch_size": 5,
+      "init_health": 10,
+      "max_health": 10,
+      "init_energy": 10.0,
+      "max_energy": 10.0,
+      "max_steps": 250,
+      "n_fire": 2,
+      "n_ice": 1,
+      "n_meat": 3,
+      "n_flower": 2,
+      "n_glass": 2
+    },
+    "training": {
+      "episodes": 3000,
+      "rollout_episodes": 16,
+      "ppo_epochs": 4,
+      "minibatch_size": 256,
+      "learning_rate": 0.0002,
+      "gamma": 0.995,
+      "gae_lambda": 0.95,
+      "clip_ratio": 0.15,
+      "target_kl": 0.012,
+      "entropy_weight": 0.01,
+      "value_weight": 0.5,
+      "planner_score_weight": 1.1,
+      "planner_teacher_tie_bonus": 0.25,
+      "residual_logit_limit_start": 0.15,
+      "residual_logit_limit_final": 1.0,
+      "residual_logit_ramp_end_episode": 1200,
+      "imitation_weight_start": 0.5,
+      "imitation_weight_final": 0.15,
+      "imitation_weight_decay_end_episode": 1000,
+      "max_grad_norm": 0.6,
+      "revisit_penalty": 0.3,
+      "repeat_visit_penalty": 0.08,
+      "turn_penalty": 0.015,
+      "seed": 7,
+      "device": "cuda",
+      "trace_every": 25,
+      "eval_every": 100,
+      "eval_episodes": 50
+    }
+  },
+  "metrics": {
+    "evaluation_count": 31,
+    "best_evaluation": {
+      "episode": 700,
+      "coverage": 0.703911111111111,
+      "coverage_p10": 0.6528888888888889,
+      "unique_per_forward": 0.9480814508517706,
+      "survived": 0.0
+    },
+    "final_evaluation": {
+      "episode": 3000,
+      "coverage": 0.6940444444444444,
+      "coverage_p10": 0.6346666666666667,
+      "unique_per_forward": 0.9461489043597244,
+      "survived": 0.0
+    },
+    "final_training_episode": {
+      "episode": 3000,
+      "coverage": 0.6755555555555556,
+      "steps": 207.0,
+      "forward_actions": 168.0,
+      "repeat_forwards": 17.0,
+      "unique_per_forward": 0.8988095238095238,
+      "health_loss": 16.0,
+      "survived": 0.0,
+      "shaped_reward": 141.15004254531868
+    },
+    "last_100_training_episodes_mean": {
+      "coverage": 0.6669333333333333,
+      "unique_per_forward": 0.9090516364750973,
+      "health_loss": 15.46,
+      "shaped_reward": 140.019475326128
+    }
+  },
+  "artifacts": {
+    "best_checkpoint": "best_coverage.pt",
+    "best_checkpoint_episode": 700,
+    "final_checkpoint": "final.pt",
+    "episode_metrics": "episode_metrics.csv",
+    "recorded_training_config": "train_config.txt"
+  }
+}

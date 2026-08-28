@@ -1,0 +1,2 @@
+episodes,seed,save_dir,trace_every,max_consecutive_turns,meat_conserve_health_norm,revisit_cost,repeat_visit_cost,hazard_cost,reserve_health_norm,resource_energy_margin,frontier_info_weight,frontier_cost_weight,frontier_hazard_weight,force_safe_frontier_forward,coverage,steps,forward_actions,repeat_forwards,unique_per_forward,health_loss,survived,terminated,coverage_p10
+10,50000,planner_lab_runs/baseline_10,1,2,0.8,1.8,0.35,10.0,0.5,4.0,0.14,0.035,0.65,True,0.7288888888888889,205.0,171.7,8.7,0.9495416773793709,15.6,0.0,1.0,0.6795555555555556

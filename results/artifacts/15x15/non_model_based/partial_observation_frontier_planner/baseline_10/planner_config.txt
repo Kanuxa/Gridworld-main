@@ -1,0 +1,15 @@
+episodes: 10
+seed: 50000
+save_dir: planner_lab_runs/baseline_10
+trace_every: 1
+max_consecutive_turns: 2
+meat_conserve_health_norm: 0.8
+revisit_cost: 1.8
+repeat_visit_cost: 0.35
+hazard_cost: 10.0
+reserve_health_norm: 0.5
+resource_energy_margin: 4.0
+frontier_info_weight: 0.14
+frontier_cost_weight: 0.035
+frontier_hazard_weight: 0.65
+force_safe_frontier_forward: True

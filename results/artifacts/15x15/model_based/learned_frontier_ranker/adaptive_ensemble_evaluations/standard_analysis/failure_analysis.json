@@ -1,0 +1,435 @@
+{
+  "schema_version": 1,
+  "inputs": {
+    "results": "experiments/adaptive_v12/standard_results.csv",
+    "trace_dir": "experiments/adaptive_v12/standard_trace",
+    "baseline_results": null
+  },
+  "input_coverage": {
+    "result_rows": 100,
+    "trace_files": 100,
+    "joined_episodes": 100,
+    "result_only_seeds": [],
+    "trace_only_seeds": []
+  },
+  "aggregate": {
+    "episode_count": 100,
+    "trace_episode_count": 100,
+    "coverage": {
+      "count": 100,
+      "mean": 0.6000444444444445,
+      "median": 0.6044444444444445,
+      "std": 0.071701700308713,
+      "min": 0.36,
+      "max": 0.7288888888888889,
+      "p10": 0.52,
+      "p25": 0.5677777777777777,
+      "p75": 0.6488888888888888,
+      "p90": 0.6804444444444445
+    },
+    "seen_fraction": {
+      "count": 100,
+      "mean": 0.9860444444444444,
+      "median": 0.9911111111111112,
+      "std": 0.021296449596871745,
+      "min": 0.8933333333333333,
+      "max": 1,
+      "p10": 0.96,
+      "p25": 0.9822222222222222,
+      "p75": 1,
+      "p90": 1
+    },
+    "termination": {
+      "status_counts": {
+        "terminated": 100
+      },
+      "end_reason_counts": {
+        "health_zero_fatigue": 100
+      },
+      "terminated_rate": 1.0,
+      "truncated_rate": 0.0
+    },
+    "planner": {
+      "plan_events": 8442,
+      "plans_per_episode": 84.42,
+      "plan_sources": {
+        "deterministic_expert": 5664,
+        "phase2_expert": 2778
+      },
+      "model_plan_events": 0,
+      "expert_plan_events": 8442,
+      "fallback_events": 0,
+      "fallback_rate": 0.0,
+      "fallback_reasons": {}
+    },
+    "model_expert_target_divergence": {
+      "comparable_plan_events": 5664,
+      "divergent_plan_events": 0,
+      "divergence_rate": 0.0,
+      "episodes_with_comparison": 100,
+      "episodes_with_divergence": 0,
+      "target_manhattan_from_expert": {
+        "count": 5664,
+        "mean": 0,
+        "median": 0,
+        "std": 0,
+        "min": 0,
+        "max": 0,
+        "p10": 0,
+        "p25": 0,
+        "p75": 0,
+        "p90": 0
+      },
+      "route_cost_delta_from_expert": {
+        "count": 5664,
+        "mean": 0,
+        "median": 0,
+        "std": 0,
+        "min": 0,
+        "max": 0,
+        "p10": 0,
+        "p25": 0,
+        "p75": 0,
+        "p90": 0
+      },
+      "route_length_delta_from_expert": {
+        "count": 5664,
+        "mean": 0,
+        "median": 0,
+        "std": 0,
+        "min": 0,
+        "max": 0,
+        "p10": 0,
+        "p25": 0,
+        "p75": 0,
+        "p90": 0
+      }
+    },
+    "phase_transition": {
+      "episodes_reaching_phase2": 100,
+      "phase2_reached_rate": 1.0,
+      "first_phase2_step": {
+        "count": 100,
+        "mean": 69.08,
+        "median": 65,
+        "std": 18.46167923023255,
+        "min": 36,
+        "max": 127,
+        "p10": 49,
+        "p25": 54.5,
+        "p75": 77,
+        "p90": 100.20000000000002
+      },
+      "phase1_plan_events": 5664,
+      "phase2_plan_events": 2778
+    },
+    "resources_and_safety": {
+      "initial_energy": {
+        "count": 100,
+        "mean": 10,
+        "median": 10,
+        "std": 0,
+        "min": 10,
+        "max": 10,
+        "p10": 10,
+        "p25": 10,
+        "p75": 10,
+        "p90": 10
+      },
+      "final_energy": {
+        "count": 100,
+        "mean": 9.577875531196593,
+        "median": 9.62008447647095,
+        "std": 0.28610308964335635,
+        "min": 8.831394910812376,
+        "max": 9.992035198211672,
+        "p10": 9.233809843063352,
+        "p25": 9.383777666091918,
+        "p75": 9.812428462505336,
+        "p90": 9.913846473693845
+      },
+      "energy_delta": {
+        "count": 100,
+        "mean": 0.4221244688034064,
+        "median": 0.3799155235290508,
+        "std": 0.28610308964335635,
+        "min": 0.007964801788327591,
+        "max": 1.1686050891876238,
+        "p10": 0.08615352630615494,
+        "p25": 0.1875715374946645,
+        "p75": 0.6162223339080826,
+        "p90": 0.7661901569366495
+      },
+      "initial_health": {
+        "count": 100,
+        "mean": 10,
+        "median": 10,
+        "std": 0,
+        "min": 10,
+        "max": 10,
+        "p10": 10,
+        "p25": 10,
+        "p75": 10,
+        "p90": 10
+      },
+      "final_health": {
+        "count": 100,
+        "mean": 0,
+        "median": 0,
+        "std": 0,
+        "min": 0,
+        "max": 0,
+        "p10": 0,
+        "p25": 0,
+        "p75": 0,
+        "p90": 0
+      },
+      "health_delta": {
+        "count": 100,
+        "mean": 10,
+        "median": 10,
+        "std": 0,
+        "min": 10,
+        "max": 10,
+        "p10": 10,
+        "p25": 10,
+        "p75": 10,
+        "p90": 10
+      },
+      "fatigue_health_loss": {
+        "count": 100,
+        "mean": 14.9,
+        "median": 15,
+        "std": 1.3964240043768943,
+        "min": 10,
+        "max": 16,
+        "p10": 13,
+        "p25": 14,
+        "p75": 16,
+        "p90": 16
+      },
+      "fatigue_episode_rate": 1.0,
+      "hazard_entries": 0,
+      "hazard_episode_rate": 0.0,
+      "direct_hazard_health_loss": {
+        "count": 100,
+        "mean": 0,
+        "median": 0,
+        "std": 0,
+        "min": 0,
+        "max": 0,
+        "p10": 0,
+        "p25": 0,
+        "p75": 0,
+        "p90": 0
+      },
+      "time_energy_cost_total": {
+        "count": 100,
+        "mean": 39.88200000000003,
+        "median": 41.200000000000045,
+        "std": 3.6703236914474378,
+        "min": 26.599999999999937,
+        "max": 44.8000000000001,
+        "p10": 35.17999999999996,
+        "p25": 37.19999999999999,
+        "p75": 42.45000000000006,
+        "p90": 43.60000000000008
+      },
+      "forward_energy_cost_total": {
+        "count": 100,
+        "mean": 96.5579999999998,
+        "median": 99.59999999999977,
+        "std": 9.34354515160056,
+        "min": 63.60000000000011,
+        "max": 110.39999999999966,
+        "p10": 84.4799999999999,
+        "p25": 91.64999999999984,
+        "p75": 103.19999999999973,
+        "p90": 105.65999999999971
+      },
+      "turn_energy_cost_total": {
+        "count": 100,
+        "mean": 3.8480000000000008,
+        "median": 3.900000000000002,
+        "std": 0.46657903939204076,
+        "min": 2.700000000000001,
+        "max": 4.899999999999999,
+        "p10": 3.2000000000000015,
+        "p25": 3.575000000000002,
+        "p75": 4.200000000000001,
+        "p90": 4.5
+      },
+      "thermal_energy_cost_total": {
+        "count": 100,
+        "mean": 11.034124468803405,
+        "median": 10.727402138710023,
+        "std": 4.03311043052319,
+        "min": 2.016709327697754,
+        "max": 24.709964132308954,
+        "p10": 6.25261350631714,
+        "p25": 8.051804769039155,
+        "p75": 13.999895977973944,
+        "p90": 15.828255867958074
+      },
+      "meat_health_restored": {
+        "count": 100,
+        "mean": 5.09,
+        "median": 6,
+        "std": 1.3497777594848717,
+        "min": 0,
+        "max": 6,
+        "p10": 3,
+        "p25": 4,
+        "p75": 6,
+        "p90": 6
+      },
+      "meat_health_wasted": {
+        "count": 100,
+        "mean": 0.53,
+        "median": 0,
+        "std": 0.9429209935090002,
+        "min": 0,
+        "max": 4,
+        "p10": 0,
+        "p25": 0,
+        "p75": 1,
+        "p90": 2
+      },
+      "contact_counts": {
+        "Empty": 19551,
+        "Meat": 281,
+        "Flower": 109
+      },
+      "contact_episode_rate": 1.0
+    },
+    "route_efficiency": {
+      "actions": {
+        "count": 100,
+        "mean": 199.41,
+        "median": 206,
+        "std": 18.351618457236953,
+        "min": 133,
+        "max": 224,
+        "p10": 175.9,
+        "p25": 186,
+        "p75": 212.25,
+        "p90": 218
+      },
+      "forward_actions": {
+        "count": 100,
+        "mean": 160.93,
+        "median": 166,
+        "std": 15.572575252667749,
+        "min": 106,
+        "max": 184,
+        "p10": 140.8,
+        "p25": 152.75,
+        "p75": 172,
+        "p90": 176.10000000000002
+      },
+      "turns": {
+        "count": 100,
+        "mean": 38.48,
+        "median": 39,
+        "std": 4.665790393920413,
+        "min": 27,
+        "max": 49,
+        "p10": 32,
+        "p25": 35.75,
+        "p75": 42,
+        "p90": 45
+      },
+      "turn_fraction": 0.19296925931497919,
+      "coverage_per_action": {
+        "count": 100,
+        "mean": 0.0030076315917792994,
+        "median": 0.0030134145689701243,
+        "std": 0.00022697551357432177,
+        "min": 0.0022929936305732482,
+        "max": 0.0035955056179775282,
+        "p10": 0.002734406678592725,
+        "p25": 0.0028653530377668306,
+        "p75": 0.003197678447678448,
+        "p90": 0.0032851157359708775
+      },
+      "coverage_per_forward_action": {
+        "count": 100,
+        "mean": 0.003726190921628704,
+        "median": 0.003736424394319131,
+        "std": 0.0002469808141551707,
+        "min": 0.002926829268292683,
+        "max": 0.004324324324324324,
+        "p10": 0.0034046216510069294,
+        "p25": 0.0035645701198026777,
+        "p75": 0.003898308776285842,
+        "p90": 0.004036202915759615
+      },
+      "seen_per_forward_action": {
+        "count": 100,
+        "mean": 0.006184271880060705,
+        "median": 0.005988023952095809,
+        "std": 0.0006022337315209889,
+        "min": 0.005410628019323671,
+        "max": 0.008469601677148848,
+        "p10": 0.005629979570990808,
+        "p25": 0.005776422764227642,
+        "p75": 0.006454206753442746,
+        "p90": 0.006918743019768583
+      },
+      "plans_per_100_actions": {
+        "count": 100,
+        "mean": 42.81385195774158,
+        "median": 41.10282953761215,
+        "std": 8.08722798588447,
+        "min": 27.804878048780488,
+        "max": 72.61146496815287,
+        "p10": 34.917549555707446,
+        "p25": 37.053354610421145,
+        "p75": 47.32597623089983,
+        "p90": 53.370370370370374
+      },
+      "target_switches": {
+        "count": 100,
+        "mean": 41.41,
+        "median": 41,
+        "std": 4.481283298342117,
+        "min": 31,
+        "max": 51,
+        "p10": 35.9,
+        "p25": 38,
+        "p75": 45,
+        "p90": 48
+      },
+      "wall_bumps": {
+        "count": 100,
+        "mean": 0,
+        "median": 0,
+        "std": 0,
+        "min": 0,
+        "max": 0,
+        "p10": 0,
+        "p25": 0,
+        "p75": 0,
+        "p90": 0
+      },
+      "planned_action_events": 72629,
+      "executed_trace_steps": 19941,
+      "planned_to_executed_action_ratio": 3.6421944736974075,
+      "forward_move_success_rate": 1.0,
+      "forward_move_observations": 16093
+    },
+    "trace_event_counts": {
+      "step": 19941,
+      "plan": 8442,
+      "episode_end": 100,
+      "episode_start": 100
+    }
+  },
+  "failure_thresholds": {
+    "bottom_coverage_quintile": 0.5546666666666666,
+    "bottom_seen_quintile": 0.9813333333333333
+  },
+  "failure_case_count": 100,
+  "baseline_comparison": null,
+  "warnings": []
+}

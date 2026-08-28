@@ -1,0 +1,2 @@
+coverage,steps,forward_actions,turn_actions,repeat_forwards,unique_per_forward,health_loss,survived,terminated,global_plan_builds,coverage_p10
+0.7869333333333333,200.62,176.9,23.72,0.84,0.9952626566371913,15.78,0.0,1.0,1.0,0.76

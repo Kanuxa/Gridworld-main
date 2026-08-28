@@ -1,0 +1,60 @@
+{
+  "training_config": {
+    "trajectory_dir": "experiments/adaptive_v12/v11_equivalent_dagger_smoke",
+    "output_dir": "experiments/adaptive_v12/v11_equivalent_ensemble_smoke",
+    "members": 1,
+    "epochs": 1,
+    "patience": 1,
+    "batch_size": 512,
+    "learning_rate": 0.001,
+    "weight_decay": 1e-05,
+    "hidden_channels": 8,
+    "seed": 2026,
+    "device": "cpu"
+  },
+  "device": "cpu",
+  "seed_split": {
+    "train": [
+      "seed_14000.npz",
+      "seed_14001.npz",
+      "seed_14005.npz",
+      "seed_14006.npz",
+      "seed_14003.npz",
+      "seed_14007.npz"
+    ],
+    "validation": [
+      "seed_14004.npz"
+    ],
+    "test": [
+      "seed_14002.npz"
+    ]
+  },
+  "members": [
+    {
+      "member": 0,
+      "seed": 2026,
+      "epochs_completed": 1,
+      "best_validation": {
+        "loss": 3.6358911991119385,
+        "accuracy": 0.11764705882352941,
+        "mean_manhattan_error": 4.294117647058823
+      },
+      "test": {
+        "loss": 3.249335765838623,
+        "accuracy": 0.06666666666666667,
+        "mean_manhattan_error": 6.4
+      },
+      "checkpoint": "member_00.pt",
+      "bootstrap_files": [
+        "seed_14007.npz",
+        "seed_14001.npz",
+        "seed_14000.npz",
+        "seed_14006.npz",
+        "seed_14005.npz",
+        "seed_14005.npz"
+      ]
+    }
+  ],
+  "ensemble_test_accuracy_mean": 0.06666666666666667,
+  "ensemble_test_manhattan_mean": 6.4
+}

@@ -1,0 +1,66 @@
+{
+  "training_config": {
+    "trajectory_dir": "experiments/adaptive_v12/current_profile_dagger_smoke",
+    "output_dir": "experiments/adaptive_v12/current_profile_ensemble_smoke",
+    "members": 1,
+    "epochs": 1,
+    "patience": 1,
+    "batch_size": 512,
+    "learning_rate": 0.001,
+    "weight_decay": 1e-05,
+    "hidden_channels": 8,
+    "seed": 2026,
+    "device": "cpu"
+  },
+  "device": "cpu",
+  "seed_split": {
+    "train": [
+      "seed_11006.npz",
+      "seed_11001.npz",
+      "seed_11009.npz",
+      "seed_11008.npz",
+      "seed_11011.npz",
+      "seed_11000.npz",
+      "seed_11002.npz",
+      "seed_11003.npz"
+    ],
+    "validation": [
+      "seed_11005.npz",
+      "seed_11007.npz"
+    ],
+    "test": [
+      "seed_11004.npz",
+      "seed_11010.npz"
+    ]
+  },
+  "members": [
+    {
+      "member": 0,
+      "seed": 2026,
+      "epochs_completed": 1,
+      "best_validation": {
+        "loss": 3.734225034713745,
+        "accuracy": 0.02127659574468085,
+        "mean_manhattan_error": 7.1063829787234045
+      },
+      "test": {
+        "loss": 3.8767056465148926,
+        "accuracy": 0.0196078431372549,
+        "mean_manhattan_error": 8.098039215686274
+      },
+      "checkpoint": "member_00.pt",
+      "bootstrap_files": [
+        "seed_11002.npz",
+        "seed_11001.npz",
+        "seed_11006.npz",
+        "seed_11000.npz",
+        "seed_11009.npz",
+        "seed_11008.npz",
+        "seed_11006.npz",
+        "seed_11009.npz"
+      ]
+    }
+  ],
+  "ensemble_test_accuracy_mean": 0.0196078431372549,
+  "ensemble_test_manhattan_mean": 8.098039215686274
+}

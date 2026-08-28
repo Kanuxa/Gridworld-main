@@ -1,0 +1,19 @@
+{
+  "trajectory_dir": "runs_phase_planner_v11/phase2_trajectories",
+  "output_dir": "runs_exploration_score_net_v11",
+  "epochs": 50,
+  "batch_size": 64,
+  "learning_rate": 0.001,
+  "weight_decay": 1e-05,
+  "hidden_channels": 48,
+  "auxiliary_weight": 0.25,
+  "survival_weight": 0.1,
+  "seed": 7,
+  "device": "auto",
+  "map_shape": [
+    11,
+    15,
+    15
+  ],
+  "survival_positive_rate": 0.07018417119979858
+}

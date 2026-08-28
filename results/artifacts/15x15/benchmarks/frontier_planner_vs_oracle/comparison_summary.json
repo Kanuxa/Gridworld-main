@@ -1,0 +1,45 @@
+{
+  "config": {
+    "episodes": 50,
+    "seed": 50000,
+    "save_dir": "planner_vs_god_runs/global_search_8192",
+    "trace_every": 1,
+    "god_search_beam_width": 8192
+  },
+  "comparison": {
+    "episodes": 50,
+    "same_seed_same_environment": true,
+    "planner": {
+      "coverage": 0.7173333333333334,
+      "steps": 202.32,
+      "forward_actions": 168.72,
+      "repeat_forwards": 8.32,
+      "unique_per_forward": 0.9506520296496781,
+      "health_loss": 15.78,
+      "survived": 0.0,
+      "terminated": 1.0,
+      "turn_actions": 33.6,
+      "coverage_p10": 0.6795555555555556
+    },
+    "god_mode": {
+      "coverage": 0.7869333333333333,
+      "steps": 200.62,
+      "forward_actions": 176.9,
+      "turn_actions": 23.72,
+      "repeat_forwards": 0.84,
+      "unique_per_forward": 0.9952626566371913,
+      "health_loss": 15.78,
+      "survived": 0.0,
+      "terminated": 1.0,
+      "global_plan_builds": 1.0,
+      "coverage_p10": 0.76
+    },
+    "mean_coverage_delta_god_minus_planner": 0.06960000000000002,
+    "median_coverage_delta_god_minus_planner": 0.06666666666666665,
+    "coverage_delta_p10_god_minus_planner": 0.03111111111111119,
+    "god_mode_wins": 49,
+    "planner_wins": 1,
+    "ties": 0,
+    "god_mode_win_rate": 0.98
+  }
+}

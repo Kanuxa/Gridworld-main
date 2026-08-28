@@ -1,0 +1,2 @@
+seed,seen_fraction,coverage,phase,reached_phase2,final_mode,actions,forward_actions,turns,replans,information_replans,coverage_replans,resource_replans,refresh_replans,horizon_replans,observation_surprises,object_changes,temperature_changes,smell_changes,direct_hazard_entries,meat_collected,fatigue_health_losses,health,energy,terminated,truncated,neural_phase1_decisions,neural_uncertainty_fallbacks,neural_feasibility_fallbacks
+2000,0.5866666666666667,0.15555555555555556,1,False,refresh,40,34,6,35,24,0,0,11,0,12,4,64,0,0,0,2,8.0,0.3586600303649903,False,True,0,0,0

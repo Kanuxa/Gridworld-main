@@ -1,0 +1,22 @@
+{
+  "config": {
+    "episodes": 50,
+    "seed": 50000,
+    "save_dir": "planner_vs_god_runs/global_search_8192/god_mode",
+    "trace_every": 1,
+    "search_beam_width": 8192
+  },
+  "metrics": {
+    "coverage": 0.7869333333333333,
+    "steps": 200.62,
+    "forward_actions": 176.9,
+    "turn_actions": 23.72,
+    "repeat_forwards": 0.84,
+    "unique_per_forward": 0.9952626566371913,
+    "health_loss": 15.78,
+    "survived": 0.0,
+    "terminated": 1.0,
+    "global_plan_builds": 1.0,
+    "coverage_p10": 0.76
+  }
+}

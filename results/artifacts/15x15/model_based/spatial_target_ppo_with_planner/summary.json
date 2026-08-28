@@ -1,0 +1,89 @@
+{
+  "config": {
+    "model_type": "target_hierarchy_v1",
+    "model_arch": "agent_centred_spatial_target_ppo_dijkstra_executor_v1",
+    "environment_preset": "15x15-baseline",
+    "environment_config": {
+      "grid_size": 15,
+      "patch_size": 5,
+      "init_health": 10,
+      "max_health": 10,
+      "init_energy": 10.0,
+      "max_energy": 10.0,
+      "max_steps": 250,
+      "n_fire": 2,
+      "n_ice": 1,
+      "n_meat": 3,
+      "n_flower": 2,
+      "n_glass": 2
+    },
+    "training": {
+      "episodes": 3000,
+      "rollout_episodes": 16,
+      "ppo_epochs": 4,
+      "minibatch_size": 256,
+      "learning_rate": 0.0002,
+      "gamma": 0.995,
+      "gae_lambda": 0.95,
+      "clip_ratio": 0.15,
+      "target_kl": 0.012,
+      "entropy_weight": 0.01,
+      "value_weight": 0.5,
+      "imitation_start": 0.8,
+      "imitation_end_episode": 1000,
+      "teacher_weight_start": 12.0,
+      "teacher_weight_end_episode": 1000,
+      "target_logit_limit": 1.5,
+      "max_grad_norm": 0.6,
+      "revisit_penalty": 0.3,
+      "repeat_visit_penalty": 0.08,
+      "turn_penalty": 0.015,
+      "seed": 7,
+      "device": "cuda",
+      "trace_every": 25,
+      "eval_every": 100,
+      "eval_episodes": 50
+    }
+  },
+  "metrics": {
+    "evaluation_count": 31,
+    "best_evaluation": {
+      "episode": 600,
+      "coverage": 0.6921777777777778,
+      "coverage_p10": 0.6551111111111111,
+      "unique_per_forward": 0.9387916256380773,
+      "survived": 0.0
+    },
+    "final_evaluation": {
+      "episode": 3000,
+      "coverage": 0.6820444444444442,
+      "coverage_p10": 0.644,
+      "unique_per_forward": 0.9053006484650155,
+      "survived": 0.0
+    },
+    "final_training_episode": {
+      "episode": 3000,
+      "coverage": 0.6577777777777778,
+      "steps": 204.0,
+      "forward_actions": 162.0,
+      "repeat_forwards": 15.0,
+      "unique_per_forward": 0.9074074074074074,
+      "health_loss": 16.0,
+      "survived": 0.0,
+      "shaped_reward": 137.7087824463845
+    },
+    "last_100_training_episodes_mean": {
+      "coverage": 0.660088888888889,
+      "unique_per_forward": 0.8971260179897743,
+      "health_loss": 15.39,
+      "shaped_reward": 137.89870321213246
+    }
+  },
+  "artifacts": {
+    "best_checkpoint": "best_coverage.pt",
+    "best_checkpoint_episode": 600,
+    "final_checkpoint": "final.pt",
+    "episode_metrics": "episode_metrics.csv",
+    "recorded_training_config": "train_config.txt"
+  }
+}

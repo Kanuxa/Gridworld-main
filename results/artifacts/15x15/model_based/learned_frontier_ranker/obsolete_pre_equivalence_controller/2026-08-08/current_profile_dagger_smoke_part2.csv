@@ -1,0 +1,6 @@
+seed,environment_set,environment_variant,seen_fraction,coverage,phase,reached_phase2,final_mode,actions,forward_actions,turns,replans,information_replans,coverage_replans,resource_replans,refresh_replans,horizon_replans,observation_surprises,object_changes,temperature_changes,smell_changes,direct_hazard_entries,meat_collected,fatigue_health_losses,health,energy,terminated,truncated,neural_phase1_decisions,neural_uncertainty_fallbacks,neural_feasibility_fallbacks
+11007,diverse,resource_dense,0.4577777777777778,0.09777777777777778,1,False,refresh,30,22,8,22,19,0,0,3,0,4,1,0,32,0,1,2,9.0,8.52767596244812,False,True,0,0,0
+11008,diverse,balanced,0.6266666666666667,0.12,1,False,information,30,26,4,26,26,0,0,0,0,0,0,0,0,0,0,2,8.0,7.261792230606077,False,True,0,0,0
+11009,diverse,warm_hazard,0.5777777777777777,0.11555555555555555,1,False,refresh,30,25,5,25,21,0,0,4,0,4,1,0,29,0,1,2,9.0,6.171604919433592,False,True,0,0,0
+11010,diverse,cold_hazard,0.5333333333333333,0.11555555555555555,1,False,refresh,30,25,5,25,24,0,0,1,0,2,1,0,28,0,0,2,8.0,7.866071081161498,False,True,0,0,0
+11011,diverse,resource_dense,0.5333333333333333,0.11555555555555555,1,False,information,30,25,5,25,18,0,0,7,0,7,1,0,30,0,1,2,8.0,7.671866798400878,False,True,0,0,0

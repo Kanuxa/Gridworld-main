@@ -1,0 +1,8 @@
+{
+  "target_loss": 3.538911989756993,
+  "auxiliary_loss": 0.01145992980205587,
+  "survival_loss": 0.5244679573391166,
+  "target_accuracy": 0.2759493670886076,
+  "mean_manhattan_error": 6.9670886075949365,
+  "survival_accuracy": 0.779746835443038
+}
