@@ -1,0 +1,29 @@
+{
+  "scope": {
+    "evaluation_type": "matched inference-time persistent-planner-prior dependency diagnostic",
+    "same_checkpoint": true,
+    "same_map_seed_and_fingerprint": true,
+    "full_prior": "Released evaluation weights: planner-score weight 1.10 and teacher tie bonus 0.25.",
+    "without_prior": "Evaluation-only ablation: planner-score weight and teacher tie bonus both zero.",
+    "interpretation": "The checkpoint was trained with the persistent planner prior. This estimates its inference-time dependence on that prior, not the effect of training an architecture without one."
+  },
+  "inputs": {
+    "full_prior_csv": "/Users/gkn/Desktop/Study/UCL/Final Project/Gridworld-main/runs/15x15/benchmarks/frontier_planner_vs_residual_prior_full_heldout/comparison_by_episode.csv",
+    "without_prior_csv": "/Users/gkn/Desktop/Study/UCL/Final Project/Gridworld-main/runs/15x15/benchmarks/frontier_planner_vs_residual_without_persistent_prior_heldout/comparison_by_episode.csv"
+  },
+  "episodes": 50,
+  "full_prior_mean_coverage": 0.6879111111111113,
+  "full_prior_coverage_p10": 0.6257777777777778,
+  "without_prior_mean_coverage": 0.6766222222222222,
+  "without_prior_coverage_p10": 0.6044444444444445,
+  "mean_coverage_delta_full_minus_without_prior": 0.011288888888888895,
+  "median_coverage_delta_full_minus_without_prior": 0.004444444444444473,
+  "bootstrap_resamples": 20000,
+  "bootstrap_seed": 25218029,
+  "bootstrap_95_ci_low": -0.00408888888888888,
+  "bootstrap_95_ci_high": 0.02684444444444446,
+  "full_prior_wins": 28,
+  "without_prior_wins": 21,
+  "ties": 1,
+  "two_sided_sign_test_p": 0.3916029105474905
+}

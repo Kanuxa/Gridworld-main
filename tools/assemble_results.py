@@ -142,7 +142,11 @@ def main() -> None:
 
     RESULTS_ROOT.mkdir(parents=True, exist_ok=True)
     with (RESULTS_ROOT / "results_catalog.csv").open("w", newline="", encoding="utf-8") as handle:
-        writer = csv.DictWriter(handle, fieldnames=list(catalog_rows[0]) if catalog_rows else ["result_file"])
+        writer = csv.DictWriter(
+            handle,
+            fieldnames=list(catalog_rows[0]) if catalog_rows else ["result_file"],
+            lineterminator="\n",
+        )
         writer.writeheader()
         writer.writerows(catalog_rows)
     metric_fields = [
@@ -151,7 +155,7 @@ def main() -> None:
         "health_loss", "survived", "terminated",
     ]
     with (RESULTS_ROOT / "summary_metrics.csv").open("w", newline="", encoding="utf-8") as handle:
-        writer = csv.DictWriter(handle, fieldnames=metric_fields)
+        writer = csv.DictWriter(handle, fieldnames=metric_fields, lineterminator="\n")
         writer.writeheader()
         writer.writerows(summary_rows)
     print(f"Copied {len(catalog_rows)} result artifacts into {ARTIFACTS_ROOT}")

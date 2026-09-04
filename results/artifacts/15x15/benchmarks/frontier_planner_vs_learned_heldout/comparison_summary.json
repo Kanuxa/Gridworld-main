@@ -1,0 +1,93 @@
+{
+  "config": {
+    "episodes": 50,
+    "seed": 60000,
+    "save_dir": "runs/15x15/benchmarks/frontier_planner_vs_learned_heldout",
+    "bootstrap_resamples": 20000,
+    "bootstrap_seed": 25218029,
+    "residual_checkpoint": "/Users/gkn/Desktop/Study/UCL/Final Project/Gridworld-main/runs/15x15/model_based/planner_residual_target_ppo/best_coverage.pt",
+    "spatial_checkpoint": "/Users/gkn/Desktop/Study/UCL/Final Project/Gridworld-main/runs/15x15/model_based/spatial_target_ppo_with_planner/best_coverage.pt"
+  },
+  "scope": {
+    "evaluation_type": "paired held-out map evaluation conditional on two saved single-seed PPO training runs",
+    "shared_environment_preset": "15x15-baseline",
+    "same_seed_same_environment": true,
+    "training_replication": "not addressed; each learned controller is one saved training run",
+    "checkpoint_selection": "checkpoints were selected on the archived 50,000--50,049 range; this benchmark evaluates fresh seeds"
+  },
+  "checkpoints": {
+    "spatial_target_ppo": {
+      "path": "/Users/gkn/Desktop/Study/UCL/Final Project/Gridworld-main/runs/15x15/model_based/spatial_target_ppo_with_planner/best_coverage.pt",
+      "sha256": "f6fa1142f99071b1d82b4f315212d72c27f6378230f5cb421612901b0cefa13b",
+      "model_type": "target_hierarchy_v1",
+      "checkpoint_episode": 600,
+      "training_seed": 7
+    },
+    "planner_residual_ppo": {
+      "path": "/Users/gkn/Desktop/Study/UCL/Final Project/Gridworld-main/runs/15x15/model_based/planner_residual_target_ppo/best_coverage.pt",
+      "sha256": "e675341167bc501e105d36a6ff14a40c41d1ec7f9c46c7509da857e1462a8be7",
+      "model_type": "planner_residual_target_v8",
+      "checkpoint_episode": 700,
+      "training_seed": 7
+    }
+  },
+  "controller_metrics": {
+    "frontier_planner": {
+      "coverage": 0.7141333333333333,
+      "steps": 202.1,
+      "forward_actions": 168.54,
+      "repeat_forwards": 8.86,
+      "unique_per_forward": 0.9476004376319467,
+      "health_loss": 15.86,
+      "survived": 0.0,
+      "terminated": 1.0,
+      "coverage_p10": 0.6795555555555556
+    },
+    "spatial_target_ppo": {
+      "coverage": 0.6731555555555556,
+      "steps": 192.84,
+      "forward_actions": 160.14,
+      "repeat_forwards": 9.68,
+      "unique_per_forward": 0.939862742012532,
+      "health_loss": 15.2,
+      "survived": 0.0,
+      "shaped_reward": 143.2124710822487,
+      "terminated": 1.0,
+      "coverage_p10": 0.6217777777777778
+    },
+    "planner_residual_ppo": {
+      "coverage": 0.6880000000000002,
+      "steps": 194.18,
+      "forward_actions": 162.2,
+      "repeat_forwards": 8.4,
+      "unique_per_forward": 0.9490116902107879,
+      "health_loss": 15.26,
+      "survived": 0.0,
+      "shaped_reward": 146.96916460304254,
+      "terminated": 1.0,
+      "coverage_p10": 0.6266666666666667
+    }
+  },
+  "paired_comparisons": {
+    "spatial_target_ppo_vs_planner": {
+      "mean_coverage_delta_learned_minus_planner": -0.04097777777777777,
+      "median_coverage_delta_learned_minus_planner": -0.03111111111111109,
+      "bootstrap_95_ci_low": -0.056711111111111094,
+      "bootstrap_95_ci_high": -0.02666666666666666,
+      "learned_wins": 9,
+      "planner_wins": 37,
+      "ties": 4,
+      "two_sided_sign_test_p": 4.0560361327379724e-05
+    },
+    "planner_residual_ppo_vs_planner": {
+      "mean_coverage_delta_learned_minus_planner": -0.026133333333333328,
+      "median_coverage_delta_learned_minus_planner": -0.01777777777777778,
+      "bootstrap_95_ci_low": -0.039822222222222224,
+      "bootstrap_95_ci_high": -0.01253333333333333,
+      "learned_wins": 14,
+      "planner_wins": 35,
+      "ties": 1,
+      "two_sided_sign_test_p": 0.003801654409748778
+    }
+  }
+}

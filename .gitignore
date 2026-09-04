@@ -28,18 +28,15 @@ runs/
 *.log
 
 # LaTex build artefacts; retain the .tex report source
-reports/*.aux
-reports/*.bbl
-reports/*.blg
-reports/*.fdb_latexmk
-reports/*.fls
-reports/*.log
-reports/*.out
-reports/*.pdf
-reports/*.synctex.gz
-reports/*.toc
-
-report
+report/*.aux
+report/*.bbl
+report/*.blg
+report/*.fdb_latexmk
+report/*.fls
+report/*.log
+report/*.out
+report/*.synctex.gz
+report/*.toc
 
 # Local IDE and operating-system files
 .vscode/

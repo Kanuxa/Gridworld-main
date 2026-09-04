@@ -74,14 +74,39 @@ matches the two-phase planner.
 | `models/benchmarks/recurrent_patch_fusion_dqn_reference/` | The later compact recurrent patch-fusion DQN reference. It is a lower learned benchmark, not the best learned result. |
 | `models/benchmarks/full_information_oracle/` | Full-map beam-search oracle. It is intentionally privileged and therefore an upper bound, not a valid partial-observation controller. |
 | `models/benchmarks/planner_vs_oracle/` | Recreates the same seeded map for the frontier planner and oracle, records a map fingerprint, and reports per-seed gaps. |
+| `models/benchmarks/planner_vs_learned/` | Evaluates the unchanged planner and selected saved PPO checkpoints on the same held-out maps, records fingerprints and checkpoint hashes, and reports paired coverage differences. |
+| `models/benchmarks/frontier_planner_component_ablation/` | Removes one named component from the released frontier planner on the same held-out maps, records all outcomes, and reports paired effects. |
+| `models/benchmarks/planner_vs_residual_ppo/` | Generalises matched residual-PPO evaluation across map presets, fixed observation/resource scenarios, and independently trained residual checkpoints; it records scenario configurations, checkpoint hashes, and map fingerprints. |
 
 ## Interpretation of the completed comparison
 
-The final planner remains the best deployable controller on the completed
-matched 15x15 evaluation. The residual target PPO reached the strongest learned
-mean coverage, but it did not exceed the planner's P10 reliability. This is
-evidence about the present task configuration, not a general claim that learned
-controllers cannot improve planners. In particular, the planner already
-encodes most of the structure needed for safe frontier progress, resource
-timing, thermal cost, and revisit avoidance; a learned residual needs strong
-evidence before overriding it.
+On the held-out paired 15x15 evaluation, the final planner remains the best
+deployable controller among the two selected saved PPO checkpoints. Residual
+PPO has the stronger learned mean coverage but is 2.61 percentage points below
+the planner on mean paired coverage and does not exceed its P10 reliability.
+This is evidence about the present task configuration and fixed checkpoints,
+not a general claim that learned controllers cannot improve planners. In
+particular, the planner already encodes much of the structure needed for safe
+frontier progress, resource timing, thermal cost, and revisit avoidance; a
+learned residual needs strong evidence before overriding it.
+
+A 50-map subtractive ablation strengthens the deterministic interpretation:
+removing resource recovery, route revisit costs, or the safe-frontier-forward
+rule lowers coverage in the released implementation, while the isolated
+thermal-cost removal is inconclusive. This is deliberately narrower than a
+claim that those settings are universally optimal.
+
+Two additional 50-map fixed-condition tests give a deliberately narrow
+robustness screen for the selected residual checkpoint: 15% public
+visual-object dropout has a directionally positive residual-minus-planner
+difference of 2.29 points (95% CI [-0.49, 5.20]) and one restorative resource
+has a directionally negative difference of -0.74 points ([-1.64, 0.13]). Both
+intervals include zero, so neither establishes a method advantage under its
+stated condition. They are not independent PPO training runs or real-sensor
+experiments.
+
+A matched evaluation-only diagnostic also zeros the residual checkpoint's
+persistent planner scores and tie bonus on 50 fresh nominal maps. Full prior
+is directionally +1.13 points over the stripped version (95% CI [-0.41, 2.68];
+p=0.392), but the interval includes zero. This does not establish dependence,
+and it is not a substitute for training the architecture without its prior.

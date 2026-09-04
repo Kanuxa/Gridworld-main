@@ -1,0 +1,120 @@
+{
+  "config": {
+    "episodes": 50,
+    "seed": 82000,
+    "save_dir": "runs/15x15/benchmarks/frontier_planner_vs_residual_object_dropout_heldout",
+    "bootstrap_resamples": 20000,
+    "bootstrap_seed": 25218029,
+    "environment_preset": "15x15-baseline",
+    "scenario": "object-dropout-15"
+  },
+  "scope": {
+    "evaluation_type": "paired held-out map evaluation conditional on saved residual-PPO checkpoints",
+    "same_seed_same_environment": true,
+    "scenario": "object-dropout-15",
+    "scenario_description": "Fifteen-percent dropout of non-empty visual object detections in every public 5x5 patch.",
+    "perception_noise": {
+      "object_dropout_probability": 0.15,
+      "temperature_noise_std_c": 0.0
+    },
+    "training_replication": "The individual checkpoint comparisons estimate map variation. When several training seeds are supplied, their separate estimates document replication but do not create a population-level confidence interval.",
+    "checkpoint_selection": "The supplied checkpoints are evaluated on fresh map seeds selected by this command."
+  },
+  "scenario_environment_config": {
+    "grid_size": 15,
+    "patch_size": 5,
+    "init_health": 10,
+    "max_health": 10,
+    "init_energy": 10.0,
+    "max_energy": 10.0,
+    "max_steps": 250,
+    "n_fire": 2,
+    "n_ice": 1,
+    "n_meat": 3,
+    "n_flower": 2,
+    "n_glass": 2,
+    "step_penalty": -0.01,
+    "explore_reward": 0.08,
+    "wall_penalty": -0.05,
+    "damage_reward_scale": 0.15,
+    "heal_reward_scale": 0.08,
+    "flower_penalty": -0.03,
+    "death_penalty": 1.0,
+    "survival_bonus": 0.0,
+    "glass_damage": 2,
+    "meat_heal": 2,
+    "fire_damage": 3,
+    "ice_damage": 3,
+    "ambient_temperature_c": 22.0,
+    "comfort_low_c": 18.0,
+    "comfort_high_c": 24.0,
+    "fire_temp_delta_amp": 13.0,
+    "ice_temp_delta_amp": 13.0,
+    "temp_sigma": 2.1,
+    "meat_smell_amp": 0.75,
+    "flower_smell_amp": 1.0,
+    "smell_sigma_meat": 2.2,
+    "smell_sigma_flower": 2.8,
+    "time_energy_cost": 0.2,
+    "forward_energy_cost": 0.6,
+    "turn_energy_cost": 0.1,
+    "thermal_extra_energy_max": 0.5,
+    "discomfort_temp_scale_c": 10.0,
+    "energy_reward_scale": 0.025,
+    "discomfort_reward_scale": 0.04,
+    "no_move_penalty": 0.01,
+    "turn_streak_penalty": 0.005
+  },
+  "checkpoints": {
+    "residual_ppo_seed_7": {
+      "path": "/Users/gkn/Desktop/Study/UCL/Final Project/Gridworld-main/runs/15x15/model_based/planner_residual_target_ppo/best_coverage.pt",
+      "sha256": "e675341167bc501e105d36a6ff14a40c41d1ec7f9c46c7509da857e1462a8be7",
+      "model_type": "planner_residual_target_v8",
+      "checkpoint_episode": 700,
+      "training_seed": 7
+    }
+  },
+  "controller_metrics": {
+    "frontier_planner": {
+      "coverage": 0.6269333333333335,
+      "steps": 172.68,
+      "forward_actions": 145.28,
+      "repeat_forwards": 5.22,
+      "unique_per_forward": 0.9656879695528191,
+      "health_loss": 15.14,
+      "survived": 0.0,
+      "terminated": 1.0,
+      "coverage_p10": 0.5333333333333333
+    },
+    "residual_ppo_seed_7": {
+      "coverage": 0.6498666666666666,
+      "steps": 183.52,
+      "forward_actions": 152.36,
+      "repeat_forwards": 7.14,
+      "unique_per_forward": 0.9539132252380732,
+      "health_loss": 15.28,
+      "survived": 0.0,
+      "shaped_reward": 138.9229661955643,
+      "terminated": 1.0,
+      "coverage_p10": 0.5542222222222223
+    }
+  },
+  "paired_comparisons": {
+    "residual_ppo_seed_7": {
+      "mean_coverage_delta_residual_minus_planner": 0.02293333333333334,
+      "median_coverage_delta_residual_minus_planner": 0.022222222222222254,
+      "bootstrap_95_ci_low": -0.004888888888888879,
+      "bootstrap_95_ci_high": 0.05200000000000001,
+      "residual_wins": 30,
+      "planner_wins": 17,
+      "ties": 3,
+      "two_sided_sign_test_p": 0.07894069368148848
+    }
+  },
+  "across_checkpoint_descriptives": {
+    "number_of_checkpoints": 1,
+    "mean_of_checkpoint_mean_deltas": 0.02293333333333334,
+    "minimum_checkpoint_mean_delta": 0.02293333333333334,
+    "maximum_checkpoint_mean_delta": 0.02293333333333334
+  }
+}

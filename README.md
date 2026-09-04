@@ -46,19 +46,42 @@ than a serial version number. The original version identifiers remain only in
 some legacy checkpoint metadata so a researcher can trace an artifact back to
 its source implementation.
 
-## Key results on the matched 15x15 benchmark
+## Key results on the held-out paired 15x15 benchmark
 
 | Controller | Observation regime | Mean coverage | P10 coverage | Role |
 | --- | --- | ---: | ---: | --- |
-| Partial-observation frontier planner | 5x5 observation + agent map | 71.73% | 67.96% | Best valid reference |
-| Spatial-target PPO with planner executor | 5x5 observation + agent map | 69.22% | 65.51% | Learned target policy |
-| Planner-residual target PPO | 5x5 observation + agent map | 70.39% | 65.29% | Best learned mean |
+| Partial-observation frontier planner | 5x5 observation + agent map | 71.41% | 67.96% | Held-out reference |
+| Spatial-target PPO with planner executor | 5x5 observation + agent map | 67.32% | 62.18% | Selected checkpoint, episode 600 |
+| Planner-residual target PPO | 5x5 observation + agent map | 68.80% | 62.67% | Selected checkpoint, episode 700 |
 | Full-information oracle | Full map at reset | 78.69% | 76.00% | Privileged upper bound |
 
-The first three results are comparable because they use the same partial
-observation constraint. The oracle is not: it quantifies the remaining value
-of full map knowledge. See [the approach catalogue](docs/APPROACH_CATALOG.md)
-for the direct-action families, historical lineage, and caveats on sample size.
+The first three results are paired on the same 50 held-out maps (seeds
+60,000--60,049) and use the same partial-observation constraint. Relative to
+the planner, the mean paired coverage differences are -4.10 percentage points
+for spatial-target PPO and -2.61 points for residual PPO. These tests concern
+the two saved checkpoints across fresh maps, not training-seed variance. The
+oracle is not a fair competitor: it quantifies the remaining value of full map
+knowledge. See [the approach catalogue](docs/APPROACH_CATALOG.md) for the
+direct-action families, historical lineage, and caveats on sample size.
+
+The released planner also has a separate 50-map paired component ablation on
+seeds 65,000--65,049. Resource recovery, route revisit costs, and the
+safe-frontier-forward rule each have a negative removal effect; the isolated
+thermal-cost removal is inconclusive. The exact per-map outcomes and intervals
+are linked from [the results overview](results/OVERVIEW.md).
+
+Two further matched 50-map sensitivity tests assess the fixed residual PPO
+checkpoint under 15% visual-object detection dropout and a one-restorative-
+resource condition. Their residual-minus-planner mean differences are +2.29
+points (95% bootstrap CI [-0.49, 5.20]) and -0.74 points ([-1.64, 0.13]),
+respectively; neither interval excludes zero. They are limited simulated
+condition shifts, not real-robot validation or PPO training-seed replication.
+
+An additional matched, evaluation-only diagnostic removes the residual
+checkpoint's persistent planner target scores and tie bonus after training.
+The released full-prior version is directionally +1.13 points higher (95%
+bootstrap CI [-0.41, 2.68]; p=0.392), so the result is inconclusive. It is a
+prior-dependency check, not a no-prior training ablation.
 
 ## Quick start
 

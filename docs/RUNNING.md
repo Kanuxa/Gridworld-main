@@ -61,10 +61,90 @@ python -m models.benchmarks.full_information_oracle.run \
 python -m models.benchmarks.planner_vs_oracle.run \
   --episodes 50 --seed 50000 --trace-every 1 --god-search-beam-width 8192 \
   --save-dir runs/15x15/frontier_planner_vs_oracle
+
+python -m models.benchmarks.planner_vs_learned.run \
+  --episodes 50 --seed 60000 --bootstrap-resamples 20000 \
+  --bootstrap-seed 25218029 \
+  --save-dir runs/15x15/benchmarks/frontier_planner_vs_learned_heldout
+
+python -m models.benchmarks.frontier_planner_component_ablation.run \
+  --episodes 50 --seed 65000 --bootstrap-resamples 20000 \
+  --bootstrap-seed 25218029 \
+  --save-dir runs/15x15/benchmarks/frontier_planner_component_ablation_heldout
+
+python -m models.benchmarks.planner_vs_residual_ppo.run \
+  --episodes 50 --seed 82000 --scenario object-dropout-15 \
+  --bootstrap-resamples 20000 --bootstrap-seed 25218029 \
+  --save-dir runs/15x15/benchmarks/frontier_planner_vs_residual_object_dropout_heldout
+
+python -m models.benchmarks.planner_vs_residual_ppo.run \
+  --episodes 50 --seed 83000 --scenario resource-scarce \
+  --bootstrap-resamples 20000 --bootstrap-seed 25218029 \
+  --save-dir runs/15x15/benchmarks/frontier_planner_vs_residual_resource_scarce_heldout
 ```
 
 The oracle reads the complete map at reset. Report it only as an upper bound,
-not in the fair partial-observation ranking.
+not in the fair partial-observation ranking. The planner-versus-learned command
+evaluates the two saved PPO checkpoints and the unchanged planner on the same
+held-out maps; its inference is across maps for these fixed checkpoints, not
+across independent PPO training seeds.
+
+The component-ablation command removes one released planner mechanism at a
+time on the same fresh maps. It is a subtractive, matched comparison rather
+than a parameter sweep; its outputs include all per-map coverage differences,
+variant configurations, exact sign tests, and bootstrap intervals.
+
+`planner_vs_residual_ppo` evaluates the saved residual-PPO checkpoint and the
+unchanged planner under one fixed scenario at a time. `object-dropout-15`
+independently omits 15% of non-empty public visual-patch objects; hidden world
+state is not changed. `resource-scarce` changes only the 15x15 baseline meat
+count from three to one. These commands compare matched map instances and
+archive scenario configurations, but they assess neither real-sensor
+robustness nor independent PPO training seeds.
+
+For the evaluation-only persistent-prior diagnostic, first evaluate the
+released and stripped versions on the same new range, then analyse their two
+CSVs directly:
+
+```bash
+python -m models.benchmarks.planner_vs_residual_ppo.run \
+  --episodes 50 --seed 84000 --bootstrap-resamples 20000 \
+  --bootstrap-seed 25218029 \
+  --save-dir runs/15x15/benchmarks/frontier_planner_vs_residual_prior_full_heldout
+
+python -m models.benchmarks.planner_vs_residual_ppo.run \
+  --episodes 50 --seed 84000 --remove-persistent-prior \
+  --bootstrap-resamples 20000 --bootstrap-seed 25218029 \
+  --save-dir runs/15x15/benchmarks/frontier_planner_vs_residual_without_persistent_prior_heldout
+
+python tools/analyse_residual_prior_inference_ablation.py
+```
+
+The final command verifies that map fingerprints match before comparing the
+two outcomes. It zeros planner target scores and the tie bonus only during
+evaluation; it is therefore a dependency diagnostic, not a no-prior training
+ablation.
+
+### Independent training-seed replication protocol
+
+The current report makes inference across fresh maps for fixed saved learned
+checkpoints; it does not make a training-procedure claim across PPO seeds. The
+following pre-specified protocol is provided for that missing experiment. It
+trains residual-PPO seeds 13, 29, and 53 with the released settings, freezes a
+new 50-map range beginning at seed 86,000, and evaluates all selected
+`best_coverage.pt` files against the same unchanged planner. The protocol JSON
+is written before training, and an incomplete set of seeds is not evaluated as
+a completed replication.
+
+```bash
+python tools/run_residual_ppo_replications.py --dry-run
+python tools/run_residual_ppo_replications.py
+```
+
+This is experimental infrastructure rather than a reported result. It should
+be run only when the full three-seed budget is available; changing seeds,
+training length, or the held-out range requires a new output root so that the
+original protocol remains auditable.
 
 ## GUI
 

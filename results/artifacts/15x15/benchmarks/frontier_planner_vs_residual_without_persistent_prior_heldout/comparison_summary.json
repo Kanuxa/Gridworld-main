@@ -1,0 +1,123 @@
+{
+  "config": {
+    "episodes": 50,
+    "seed": 84000,
+    "save_dir": "runs/15x15/benchmarks/frontier_planner_vs_residual_without_persistent_prior_heldout",
+    "bootstrap_resamples": 20000,
+    "bootstrap_seed": 25218029,
+    "environment_preset": "15x15-baseline",
+    "scenario": "nominal"
+  },
+  "scope": {
+    "evaluation_type": "paired held-out map evaluation conditional on saved residual-PPO checkpoints",
+    "same_seed_same_environment": true,
+    "scenario": "nominal",
+    "scenario_description": "Released environment and unmodified observations.",
+    "perception_noise": {
+      "object_dropout_probability": 0.0,
+      "temperature_noise_std_c": 0.0
+    },
+    "training_replication": "The individual checkpoint comparisons estimate map variation. When several training seeds are supplied, their separate estimates document replication but do not create a population-level confidence interval.",
+    "checkpoint_selection": "The supplied checkpoints are evaluated on fresh map seeds selected by this command.",
+    "inference_ablation": "Planner target-score weight and teacher tie bonus are set to zero only at evaluation; the checkpoint was trained with its persistent planner prior."
+  },
+  "scenario_environment_config": {
+    "grid_size": 15,
+    "patch_size": 5,
+    "init_health": 10,
+    "max_health": 10,
+    "init_energy": 10.0,
+    "max_energy": 10.0,
+    "max_steps": 250,
+    "n_fire": 2,
+    "n_ice": 1,
+    "n_meat": 3,
+    "n_flower": 2,
+    "n_glass": 2,
+    "step_penalty": -0.01,
+    "explore_reward": 0.08,
+    "wall_penalty": -0.05,
+    "damage_reward_scale": 0.15,
+    "heal_reward_scale": 0.08,
+    "flower_penalty": -0.03,
+    "death_penalty": 1.0,
+    "survival_bonus": 0.0,
+    "glass_damage": 2,
+    "meat_heal": 2,
+    "fire_damage": 3,
+    "ice_damage": 3,
+    "ambient_temperature_c": 22.0,
+    "comfort_low_c": 18.0,
+    "comfort_high_c": 24.0,
+    "fire_temp_delta_amp": 13.0,
+    "ice_temp_delta_amp": 13.0,
+    "temp_sigma": 2.1,
+    "meat_smell_amp": 0.75,
+    "flower_smell_amp": 1.0,
+    "smell_sigma_meat": 2.2,
+    "smell_sigma_flower": 2.8,
+    "time_energy_cost": 0.2,
+    "forward_energy_cost": 0.6,
+    "turn_energy_cost": 0.1,
+    "thermal_extra_energy_max": 0.5,
+    "discomfort_temp_scale_c": 10.0,
+    "energy_reward_scale": 0.025,
+    "discomfort_reward_scale": 0.04,
+    "no_move_penalty": 0.01,
+    "turn_streak_penalty": 0.005
+  },
+  "checkpoints": {
+    "residual_ppo_seed_7_without_persistent_prior": {
+      "path": "/Users/gkn/Desktop/Study/UCL/Final Project/Gridworld-main/runs/15x15/model_based/planner_residual_target_ppo/best_coverage.pt",
+      "sha256": "e675341167bc501e105d36a6ff14a40c41d1ec7f9c46c7509da857e1462a8be7",
+      "model_type": "planner_residual_target_v8",
+      "checkpoint_episode": 700,
+      "training_seed": 7,
+      "evaluation_planner_score_weight": 0.0,
+      "evaluation_planner_teacher_tie_bonus": 0.0
+    }
+  },
+  "controller_metrics": {
+    "frontier_planner": {
+      "coverage": 0.7120888888888888,
+      "steps": 198.54,
+      "forward_actions": 167.0,
+      "repeat_forwards": 7.78,
+      "unique_per_forward": 0.9534385453979213,
+      "health_loss": 15.66,
+      "survived": 0.0,
+      "terminated": 1.0,
+      "coverage_p10": 0.6573333333333333
+    },
+    "residual_ppo_seed_7_without_persistent_prior": {
+      "coverage": 0.6766222222222222,
+      "steps": 196.22,
+      "forward_actions": 162.02,
+      "repeat_forwards": 10.78,
+      "unique_per_forward": 0.9342823403669329,
+      "health_loss": 15.16,
+      "survived": 0.0,
+      "shaped_reward": 143.63037202099795,
+      "terminated": 1.0,
+      "coverage_p10": 0.6044444444444445
+    }
+  },
+  "paired_comparisons": {
+    "residual_ppo_seed_7_without_persistent_prior": {
+      "mean_coverage_delta_residual_minus_planner": -0.03546666666666666,
+      "median_coverage_delta_residual_minus_planner": -0.039999999999999925,
+      "bootstrap_95_ci_low": -0.05173333333333334,
+      "bootstrap_95_ci_high": -0.018666666666666668,
+      "residual_wins": 13,
+      "planner_wins": 37,
+      "ties": 0,
+      "two_sided_sign_test_p": 0.000936222910851825
+    }
+  },
+  "across_checkpoint_descriptives": {
+    "number_of_checkpoints": 1,
+    "mean_of_checkpoint_mean_deltas": -0.03546666666666666,
+    "minimum_checkpoint_mean_delta": -0.03546666666666666,
+    "maximum_checkpoint_mean_delta": -0.03546666666666666
+  }
+}

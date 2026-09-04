@@ -84,6 +84,10 @@ class PlannerLabConfig:
     frontier_info_weight: float = 0.14
     frontier_cost_weight: float = 0.035
     frontier_hazard_weight: float = 0.65
+    comfort_low_c: float = 18.0
+    comfort_high_c: float = 24.0
+    thermal_extra_energy_max: float = 0.50
+    discomfort_temp_scale_c: float = 10.0
     force_safe_frontier_forward: bool = True
     environment_preset: str = BASELINE_PRESET
 
@@ -200,13 +204,32 @@ def choose_action(memory: CoverageMemory, health_norm: float, turn_streak: int, 
     return int(action), mask, context
 
 
-def run_episode(cfg: PlannerLabConfig, episode: int, seed: int, trace_dir: Path | None = None) -> Dict[str, float]:
-    env, switches = build_env(cfg.environment_preset)
+def run_episode(
+    cfg: PlannerLabConfig,
+    episode: int,
+    seed: int,
+    trace_dir: Path | None = None,
+    env: SensoryGridEnv | None = None,
+) -> Dict[str, float]:
+    """Run the planner once, optionally against an observation-compatible environment.
+
+    ``env`` supports matched robustness benchmarks without changing the normal
+    command-line planner behaviour.  It must expose the same public interface
+    as :class:`SensoryGridEnv`; the controller still receives only its public
+    observation dictionary.
+    """
+    if env is None:
+        env, switches = build_env(cfg.environment_preset)
+    else:
+        _, switches = build_env(cfg.environment_preset)
     planner = StaticFrontierPlanner(
         revisit_cost=cfg.revisit_cost, repeat_visit_cost=cfg.repeat_visit_cost, hazard_cost=cfg.hazard_cost,
         reserve_health_norm=cfg.reserve_health_norm, resource_energy_margin=cfg.resource_energy_margin,
         frontier_info_weight=cfg.frontier_info_weight, frontier_cost_weight=cfg.frontier_cost_weight,
         frontier_hazard_weight=cfg.frontier_hazard_weight,
+        comfort_low_c=cfg.comfort_low_c, comfort_high_c=cfg.comfort_high_c,
+        thermal_extra_energy_max=cfg.thermal_extra_energy_max,
+        discomfort_temp_scale_c=cfg.discomfort_temp_scale_c,
     )
     obs, _ = env.reset(seed=seed)
     memory = CoverageMemory(env.config.grid_size, env.config.patch_size, env.config.ambient_temperature_c)
